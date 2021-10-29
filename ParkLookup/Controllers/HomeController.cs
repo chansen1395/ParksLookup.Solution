@@ -56,14 +56,7 @@ namespace ParkLookup.Controllers
             parks = parks.OrderBy(s => s.Rating);
             break;
           }
-        foreach(Park park in parks)
-        {
-           System.Console.WriteLine("Test toList: " + park.ParkName);
-        
-        
-        }
-        // return View();
-        // return View(parks);
+
         return View(parks.ToList());
       }
 
@@ -79,6 +72,16 @@ namespace ParkLookup.Controllers
         };
 
           return View(data.ToList());
+      }
+
+      // POST api/Parks
+      [HttpPost("/About")]
+      public async Task<ActionResult<Park>> Post(Park park)
+      {
+        _db.Parks.Add(park);
+        await _db.SaveChangesAsync();
+
+        return RedirectToAction("About");
       }
 
     }
