@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace TravelAPI.Models
+namespace ParkLookup.Models
 {
-    public class TravelAPIContext : DbContext
+    public class ParkLookupContext : DbContext
     {
-      public TravelAPIContext(DbContextOptions<TravelAPIContext> options)
+      public ParkLookupContext(DbContextOptions<ParkLookupContext> options)
           : base(options)
       {
       }

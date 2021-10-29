@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace TravelAPI.Models
+namespace ParkLookup.Models
 {
   public class Park
   {

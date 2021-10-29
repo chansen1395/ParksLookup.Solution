@@ -2,22 +2,22 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TravelAPI.Models;
+using ParkLookup.Models;
 using System.Linq;
 using System;
-// using TravelAPI.DAL;
-using TravelAPI.ViewModels;
+// using ParkLookup.DAL;
+using ParkLookup.ViewModels;
 // using Microsoft.AspNetCore.Mvc;
 
-namespace TravelAPI.Controllers
+namespace ParkLookup.Controllers
 {
     public class HomeController : Controller
     {
     // ABOUT
-    // private TravelAPIContext db = new TravelAPIContext();
-    private readonly TravelAPIContext _db;
+    // private ParkLookupContext db = new ParkLookupContext();
+    private readonly ParkLookupContext _db;
 
-    public HomeController(TravelAPIContext db)
+    public HomeController(ParkLookupContext db)
     {
       _db = db;
     }
@@ -32,13 +32,13 @@ namespace TravelAPI.Controllers
       public ViewResult Sort(string sortOrder, string searchString)
       {
         ViewBag.RatingSortParm = String.IsNullOrEmpty(sortOrder) ? "rating_desc" : "";
-        ViewBag.StateSortParm = sortOrder == "State" ? "state_desc" : "State";
+        ViewBag.ParkNameSortParm = sortOrder == "ParkName" ? "parkname_desc" : "ParkName";
         var parks = from s in _db.Parks
                       select s;
         
         if (!String.IsNullOrEmpty(searchString))
         {
-          parks = parks.Where(s => s.State.Contains(searchString)
+          parks = parks.Where(s => s.ParkName.Contains(searchString)
           || s.City.Contains(searchString));
         }
         switch (sortOrder)
@@ -46,11 +46,11 @@ namespace TravelAPI.Controllers
           case "rating_desc":
             parks = parks.OrderByDescending(s => s.Rating);
             break;
-          case "State":
-            parks = parks.OrderBy(s => s.State);
+          case "ParkName":
+            parks = parks.OrderBy(s => s.ParkName);
             break;
           case "state_desc":
-            parks = parks.OrderByDescending(s => s.State);
+            parks = parks.OrderByDescending(s => s.ParkName);
             break;
           default:
             parks = parks.OrderBy(s => s.Rating);
@@ -58,7 +58,7 @@ namespace TravelAPI.Controllers
           }
         foreach(Park park in parks)
         {
-           System.Console.WriteLine("Test toList: " + park.State);
+           System.Console.WriteLine("Test toList: " + park.ParkName);
         
         
         }
@@ -71,10 +71,10 @@ namespace TravelAPI.Controllers
       public ActionResult About()
       {
         IQueryable<RatingCountGroup> data = from park in _db.Parks
-        group park by park.City into ratingGroup orderby ratingGroup.Count() descending
+        group park by park.ParkName into ratingGroup orderby ratingGroup.Count() descending
         select new RatingCountGroup()
         {
-            City = ratingGroup.Key,
+            ParkName = ratingGroup.Key,
             RatingCount = ratingGroup.Count()
         };
 

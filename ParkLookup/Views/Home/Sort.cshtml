@@ -1,0 +1,34 @@
+@using ParkLookup.Models
+
+@model List<ParkLookup.Models.Park>
+
+
+
+
+@using (Html.BeginForm("Sort", "Park", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("searchString")  
+        <input type="submit" value="Search" /></p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Last Rating", "Sort", new { sortOrder = ViewBag.RatingSortParm })
+        </th>
+        <th>Rating
+        </th>
+        <th>
+            @Html.ActionLink("ParkName", "Sort", new { sortOrder = ViewBag.ParkNameSortParm })
+        </th>
+        <th></th>
+    </tr>
+
+
+@foreach (Park park in Model) 
+{
+    <li>@park.ParkName, @park.City</li>
+}
+</table>
+<hr>
+<button class="bottom">@Html.ActionLink("Go To About", "About")</button>
