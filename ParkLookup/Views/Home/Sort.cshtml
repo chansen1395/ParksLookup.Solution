@@ -28,6 +28,8 @@
 @foreach (Park park in Model) 
 {
     <li>@park.ParkName, @park.City</li>
+    <button><a href="/Details/@(park.ParkId)">View Details</a></button>
+    <hr>
 }
 </table>
 <hr>

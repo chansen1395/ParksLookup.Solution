@@ -84,5 +84,29 @@ namespace ParkLookup.Controllers
         return RedirectToAction("About");
       }
 
+      [HttpGet("/Details/{id}")]
+      public IActionResult Details(int id)
+      {
+        var thispark = _db.Parks.FirstOrDefault(park => park.ParkId == id);
+          
+          return View(thispark);
+      }
+
+      // DELETE: api/Parks/5
+      [HttpPost, ActionName("Delete")]
+      public ActionResult Delete(int id)
+      {
+        var park = _db.Parks.Find(id);
+        if (park == null)
+        {
+          return NotFound();
+        }
+
+        _db.Parks.Remove(park);
+        _db.SaveChanges();
+
+        return RedirectToAction("Sort");
+      }
+
     }
 }

@@ -1,0 +1,32 @@
+@* @using ParkLookup.Models *@
+
+@model ParkLookup.Models.Park
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Park Info:</h1>
+<ul>
+    <li>ID: @Model.ParkId</li>
+    <li>User: @Model.User</li>
+    <li>Park Name: @Model.ParkName</li>
+    <li>State: @Model.State</li>
+    <li>City: @Model.City</li>
+    <li>Rating: @Model.Rating</li>
+    <li>Activities: @Model.Activities</li>
+</ul>
+<br>
+
+<a href="/Parks/Edit/@(Model.ParkId)"><p>Edit</p></a>
+<br>
+
+<a href="/Parks"><p>Return</p></a>
+
+@Html.DisplayNameFor(model => model.ParkName): @Html.DisplayFor(model => model.ParkName)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+@* <a href="/Parks/Delete/@(Model.ParkId)"><p>DELETE REVIEW</p></a> *@
