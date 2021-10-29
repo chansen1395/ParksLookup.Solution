@@ -3,8 +3,6 @@
 @model List<ParkLookup.Models.Park>
 
 
-
-
 @using (Html.BeginForm("Sort", "Park", FormMethod.Get))
 {
     <p>
@@ -23,7 +21,6 @@
         </th>
         <th></th>
     </tr>
-
 
 @foreach (Park park in Model) 
 {
