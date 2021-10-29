@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParkLookup.Models;
 using System.Linq;
+using System;
+
 
     // public int ParkId { get; set; }
     // public string User { get; set; }
@@ -158,37 +160,11 @@ namespace ParkLookup.Controllers
       return NoContent();
     }
 
-//     // ParkController.cs
-//     [HttpPatch("{id:int}")]
-//     public async Task<IActionResult> Patch(int id, [FromBody] JsonPatchDocument<Park> patchEntity)
-//     {
-//     var entity = Parks.FirstOrDefault(park => park.Id == id);
- 
-//     if (entity == null)
-//     {
-//         return NotFound();
-//     }
- 
-//     patchEntity.ApplyTo(entity, ModelState); // Must have Microsoft.AspNetCore.Mvc.NewtonsoftJson installed
-    
-//     return Ok(entity);
-// }
-
-
     private bool ParkExists(int id)
     {
       return _db.Parks.Any(e => e.ParkId == id);
     }
+
+
   }
 }
-
-
-    // public string User { get; set; }
-
-    // public string State { get; set; }
-
-    // public string City { get; set; }
-
-    // public int Rating { get; set; }
-    
-    // public string Activities { get; set; }

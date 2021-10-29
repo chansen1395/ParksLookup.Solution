@@ -14,7 +14,6 @@ namespace ParkLookup.Controllers
     public class HomeController : Controller
     {
     // ABOUT
-    // private ParkLookupContext db = new ParkLookupContext();
     private readonly ParkLookupContext _db;
 
     public HomeController(ParkLookupContext db)
@@ -27,7 +26,7 @@ namespace ParkLookup.Controllers
         return View();
       }
 
-      // Attempt to add index
+      // Sorts/filters results on certain parameters
       [HttpGet("/Sort")]
       public ViewResult Sort(string sortOrder, string searchString)
       {
@@ -92,8 +91,23 @@ namespace ParkLookup.Controllers
           return View(thispark);
       }
 
+      [HttpGet("/Edit/{id}")]
+      public ActionResult Edit(int id)
+      {
+        var thisPark = _db.Parks.FirstOrDefault(park => park.ParkId == id);
+        return View(thisPark);
+      }
+
+      [HttpPost("/Edit/{id}")]
+      public ActionResult Edit(Park park)
+      {
+        _db.Entry(park).State = EntityState.Modified;
+        _db.SaveChanges();
+        return RedirectToAction("Sort");
+      }
+
       // DELETE: api/Parks/5
-      [HttpPost, ActionName("Delete")]
+      [ActionName("Delete")]
       public ActionResult Delete(int id)
       {
         var park = _db.Parks.Find(id);

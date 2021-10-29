@@ -1,23 +1,26 @@
 
 <h1>Edit Info:</h1>
-<form action="/Reviews/Details/@(Model.ReviewId)" method="post">
+<form action="/Details/@(Model.ParkId)" method="post">
   <label for="user">User's Name</label>
   <input id="user" name="user" type="text" value="@(Model.User)">
   <br>
-  <label for="country">Review's Country</label>
-  <input id="country" name="country" type="text" value="@(Model.Country)">
+  <label for="state">Park's State</label>
+  <input id="state" name="state" type="text" value="@(Model.State)">
   <br>
-  <label for="city">Review's City</label>
+  <label for="city">Park's City</label>
   <input id="city" name="city" type="text" value="@(Model.City)">
   <br>
-  <label for="date">Review's Date</label>
-  <input id="date" name="date" type="date" value="@(Model.Date)">
+  <label for="parkname">Park's Name</label>
+  <input id="parkname" name="parkname" type="parkname" value="@(Model.ParkName)">
   <br>
-  <label for="date">Review's Rating</label>
+  <label for="rating">Park's Rating</label>
   <input id="rating" name="rating" type="rating" value="@(Model.Rating)">
+  <br>
+  <label for="activities">Park's Activities</label>
+  <input id="activities" name="activities" type="activities" value="@(Model.Activities)">
   <br>
   <button type="submit">Go!</button>
 </form>
 
 <hr>
-<a href="/Reviews/Details/@(Model.ReviewId)"><p>Return to Details</p></a>
+<a href="/Details/@(Model.ParkId)"><p>Return to Details</p></a>
