@@ -91,36 +91,35 @@ namespace ParkLookup.Controllers
           return View(thispark);
       }
 
-      [HttpGet("/Edit/{id}")]
-      public ActionResult Edit(int id)
-      {
-        var thisPark = _db.Parks.FirstOrDefault(park => park.ParkId == id);
-        return View(thisPark);
-      }
+      // [HttpGet("/Edit/{id}")]
+      // public ActionResult Edit(int id)
+      // {
+      //   var thisPark = _db.Parks.FirstOrDefault(park => park.ParkId == id);
+      //   return View(thisPark);
+      // }
 
-      [HttpPost("/Edit/{id}")]
-      public ActionResult Edit(Park park)
-      {
-        _db.Entry(park).State = EntityState.Modified;
-        _db.SaveChanges();
-        return RedirectToAction("Sort");
-      }
+      // [HttpPost("/Edit/{id}")]
+      // public ActionResult Edit(Park park)
+      // {
+      //   _db.Entry(park).State = EntityState.Modified;
+      //   _db.SaveChanges();
+      //   return RedirectToAction("Sort");
+      // }
 
-      // DELETE: api/Parks/5
-      [ActionName("Delete")]
-      public ActionResult Delete(int id)
-      {
-        var park = _db.Parks.Find(id);
-        if (park == null)
-        {
-          return NotFound();
-        }
+      // // DELETE: api/Parks/5
+      // [ActionName("Delete")]
+      // public ActionResult Delete(int id)
+      // {
+      //   var park = _db.Parks.Find(id);
+      //   if (park == null)
+      //   {
+      //     return NotFound();
+      //   }
 
-        _db.Parks.Remove(park);
-        _db.SaveChanges();
+      //   _db.Parks.Remove(park);
+      //   _db.SaveChanges();
 
-        return RedirectToAction("Sort");
-      }
-
+      //   return RedirectToAction("Sort");
+      // }
     }
 }

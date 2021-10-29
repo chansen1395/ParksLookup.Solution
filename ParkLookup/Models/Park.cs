@@ -31,19 +31,5 @@ namespace ParkLookup.Models
     [Range(1, 5, ErrorMessage = "Please enter a rating between 1 - 5")]
     public int Rating { get; set; }
     
-
   }
-  
 }
-
-    // public int ParkId { get; set; }
-    // public string User { get; set; }
-    // public string ParkName { get; set; }
-    // public string Country { get; set; }
-    // public string City { get; set; }
-    // public string Activities { get; set; }
-    // public int Rating { get; set; }
-
-
-
-// look up random Park

@@ -27,11 +27,3 @@ namespace ParkLookup.Models
       }
     }
 }
-
-    // public int ParkId { get; set; }
-    // public string User { get; set; }
-    // public string ParkName { get; set; }
-    // public string State { get; set; }
-    // public string City { get; set; }
-    // public string Activities { get; set; }
-    // public int Rating { get; set; }
